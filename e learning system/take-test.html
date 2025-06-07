@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    function getCourseName() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("course") || "Test";
+    }
+
+    window.onload = function() {
+      document.getElementById("test-title").innerText = "Test for " + getCourseName();
+    };
+
+    function submitTest(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("success-message").style.display = "block"; // Show success message
+    }
+  </script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 id="test-title">Test</h2>
+    <p>Answer the following multiple-choice questions and submit your test.</p>
+
+    <form onsubmit="submitTest(event)">
+      <!-- Aptitude Questions -->
+      <div class="mb-4">
+        <h5>1. If the sum of two numbers is 20 and their product is 96, what is the difference between the two numbers?</h5>
+        <input type="radio" name="q1" value="2"> 2<br>
+        <input type="radio" name="q1" value="4"> 4<br>
+        <input type="radio" name="q1" value="6"> 6<br>
+        <input type="radio" name="q1" value="8"> 8
+      </div>
+
+      <div class="mb-4">
+        <h5>2. A train running at 60 km/hr crosses a pole in 9 seconds. What is the length of the train?</h5>
+        <input type="radio" name="q2" value="120 meters"> 120 meters<br>
+        <input type="radio" name="q2" value="150 meters"> 150 meters<br>
+        <input type="radio" name="q2" value="180 meters"> 180 meters<br>
+        <input type="radio" name="q2" value="90 meters"> 90 meters
+      </div>
+
+      <!-- Technical Questions -->
+      <div class="mb-4">
+        <h5>3. What is the time complexity of QuickSort in the worst case?</h5>
+        <input type="radio" name="q3" value="O(n log n)"> O(n log n)<br>
+        <input type="radio" name="q3" value="O(n^2)"> O(n²)<br>
+        <input type="radio" name="q3" value="O(n)"> O(n)<br>
+        <input type="radio" name="q3" value="O(log n)"> O(log n)
+      </div>
+
+      <div class="mb-4">
+        <h5>4. Which data structure is used for implementing recursion?</h5>
+        <input type="radio" name="q4" value="Queue"> Queue<br>
+        <input type="radio" name="q4" value="Stack"> Stack<br>
+        <input type="radio" name="q4" value="Heap"> Heap<br>
+        <input type="radio" name="q4" value="Graph"> Graph
+      </div>
+
+      <div class="mb-4">
+        <h5>5. In C programming, what is the output of `printf("%d", 'A');`?</h5>
+        <input type="radio" name="q5" value="A"> A<br>
+        <input type="radio" name="q5" value="65"> 65<br>
+        <input type="radio" name="q5" value="Error"> Error<br>
+        <input type="radio" name="q5" value="None of the above"> None of the above
+      </div>
+
+      <div class="mb-4">
+        <h5>6. Which of the following is NOT a relational database management system?</h5>
+        <input type="radio" name="q6" value="MySQL"> MySQL<br>
+        <input type="radio" name="q6" value="PostgreSQL"> PostgreSQL<br>
+        <input type="radio" name="q6" value="MongoDB"> MongoDB<br>
+        <input type="radio" name="q6" value="Oracle"> Oracle
+      </div>
+
+      <!-- Group Discussion / Soft Skills Questions -->
+      <div class="mb-4">
+        <h5>7. In a group discussion, which of the following is a good practice?</h5>
+        <input type="radio" name="q7" value="Interrupting others to make a point"> Interrupting others to make a point<br>
+        <input type="radio" name="q7" value="Actively listening and responding with relevant points"> Actively listening and responding with relevant points<br>
+        <input type="radio" name="q7" value="Speaking the loudest to dominate the discussion"> Speaking the loudest to dominate the discussion<br>
+        <input type="radio" name="q7" value="Ignoring opposing viewpoints"> Ignoring opposing viewpoints
+      </div>
+
+      <div class="mb-4">
+        <h5>8. Which of the following is the most effective way to conclude a group discussion?</h5>
+        <input type="radio" name="q8" value="Restating the strongest arguments made in the discussion"> Restating the strongest arguments made in the discussion<br>
+        <input type="radio" name="q8" value="Criticizing others' viewpoints"> Criticizing others' viewpoints<br>
+        <input type="radio" name="q8" value="Repeating your own point multiple times"> Repeating your own point multiple times<br>
+        <input type="radio" name="q8" value="Leaving the discussion without summarizing"> Leaving the discussion without summarizing
+      </div>
+
+      <!-- Logical & Analytical Reasoning -->
+      <div class="mb-4">
+        <h5>9. If all cats are dogs and some dogs are lions, which of the following is definitely true?</h5>
+        <input type="radio" name="q9" value="All cats are lions"> All cats are lions<br>
+        <input type="radio" name="q9" value="Some cats are lions"> Some cats are lions<br>
+        <input type="radio" name="q9" value="Some dogs are cats"> Some dogs are cats<br>
+        <input type="radio" name="q9" value="No cats are lions"> No cats are lions
+      </div>
+
+      <div class="mb-4">
+        <h5>10. In a certain code, if CAT is written as 3120, what will DOG be written as?</h5>
+        <input type="radio" name="q10" value="4157"> 4157<br>
+        <input type="radio" name="q10" value="4180"> 4180<br>
+        <input type="radio" name="q10" value="4680"> 4680<br>
+        <input type="radio" name="q10" value="3150"> 3150
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit Test</button>
+    </form>
+
+    <!-- Success Message (Initially Hidden) -->
+    <div id="success-message" class="mt-4 alert alert-success" style="display: none;">
+      Your test has been submitted successfully!
+    </div>
+
+    <div class="mt-4">
+      <a href="user-dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

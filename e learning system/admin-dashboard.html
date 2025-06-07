@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>   
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Administration Panel</title>   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">   
+    <style>     
+        body {
+            background-image: url('style/ad.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        } 
+
+        .container {
+            text-align: center;
+        } 
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        } 
+
+        .card {
+            width: 280px;
+            height: 230px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        } 
+
+        .card:hover {
+            transform: scale(1.05);
+        } 
+
+        .card-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        } 
+
+        h2 {
+            color: #007bff;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        } 
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head> 
+<body>   
+    <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    <div class="container">     
+        <h2>Administration Panel</h2> 
+        <div class="row">       
+            <div class="col-md-6 col-lg-4">         
+                <div class="card" onclick="location.href='manage-students.html'">           
+                    <div class="card-body">             
+                        <h5 class="card-title">Manage Students</h5>           
+                    </div>         
+                </div>       
+            </div>       
+            <div class="col-md-6 col-lg-4">         
+                <div class="card" onclick="location.href='manage-courses.html'">           
+                    <div class="card-body">             
+                        <h5 class="card-title">Manage Courses</h5>           
+                    </div>         
+                </div>       
+            </div>     
+        </div>   
+    </div>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> 
+</body> 
+</html>
