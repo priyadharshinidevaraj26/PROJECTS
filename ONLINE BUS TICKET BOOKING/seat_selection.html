@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('styles/3.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .seat {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+        .available { background-color: white; }
+        .selected { background-color: green; color: white; }
+        .booked { background-color: gray; cursor: not-allowed; color: white; }
+        .legend span {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .proceed-button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .proceed-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Select Your Seat</h2>
+
+        <div class="legend">
+            <span class="available">Available</span>
+            <span class="selected">Selected</span>
+            <span class="booked">Booked</span>
+        </div>
+
+        <div class="bus-container">
+            <h3>Driver</h3>
+            <div id="seat-layout"></div>
+        </div>
+
+        <h3>Selected Seats: <span id="selected-seats">None</span></h3>
+        <h3>Total Cost: ₹<span id="total-cost">0</span></h3>
+
+        <button class="proceed-button" id="proceed-btn">Proceed to Payment</button>
+    </div>
+
+    <script>
+        const totalSeats = 25;
+        const seatsPerRow = 4;
+        const seatPrice = 750;
+        let selectedSeats = [];
+        let bookedSeats = [3, 7, 10, 14, 18];
+
+        const seatLayout = document.getElementById("seat-layout");
+
+        function renderSeats() {
+            seatLayout.innerHTML = "";
+            for (let i = 1; i <= totalSeats; i++) {
+                const seat = document.createElement("div");
+                seat.classList.add("seat");
+                seat.textContent = i;
+
+                if (bookedSeats.includes(i)) {
+                    seat.classList.add("booked");
+                } else {
+                    seat.classList.add("available");
+                    seat.addEventListener("click", () => toggleSeat(i));
+                }
+
+                seatLayout.appendChild(seat);
+
+                if (i % seatsPerRow === 0) {
+                    seatLayout.appendChild(document.createElement("br"));
+                }
+            }
+        }
+
+        function toggleSeat(seatNumber) {
+            const index = selectedSeats.indexOf(seatNumber);
+
+            if (index > -1) {
+                selectedSeats.splice(index, 1);
+            } else {
+                selectedSeats.push(seatNumber);
+            }
+
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.querySelectorAll(".seat").forEach(seat => {
+                const seatNumber = parseInt(seat.textContent);
+
+                if (selectedSeats.includes(seatNumber)) {
+                    seat.classList.add("selected");
+                    seat.classList.remove("available");
+                } else if (!bookedSeats.includes(seatNumber)) {
+                    seat.classList.remove("selected");
+                    seat.classList.add("available");
+                }
+            });
+
+            document.getElementById("selected-seats").textContent = selectedSeats.length > 0 ? selectedSeats.join(", ") : "None";
+            document.getElementById("total-cost").textContent = selectedSeats.length * seatPrice;
+        }
+
+        document.getElementById("proceed-btn").addEventListener("click", () => {
+            if (selectedSeats.length > 0) {
+                window.location.href = "payment.html";
+            } else {
+                alert("Please select at least one seat before proceeding!");
+            }
+        });
+
+        renderSeats();
+    </script>
+</body>
+</html>
