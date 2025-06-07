@@ -1,0 +1,307 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav {
+    background: #333;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    background: #555;
+    border-radius: 10px;
+}
+#about {
+    padding: 50px 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0056b3;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: blue;
+    margin: 5px auto;
+}
+
+/* About Content */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-container img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+
+.about-text {
+    max-width: 500px;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.about-text p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+.resume-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.resume-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Home Section */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    padding: 40px;
+}
+h1 {
+    font-size: 3rem; /* Adjust as needed */
+}
+
+h1 span {
+    font-size: inherit; /* This ensures both parts have the same size */
+}
+
+
+.name {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+/* Profile Image */
+.profile {
+    margin-top: 40px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+
+/* Skills Page */
+/* Skills Section */
+#skills {
+    text-align:center;
+    padding: 20px 10%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3366ff;
+    text-decoration: underline;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.skills-content {
+    width: 50%;
+    text-align: left;
+}
+
+.skills-content h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.skill {
+    margin-bottom: 15px;
+}
+
+.skill-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.skill-info img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    background: #3366ff;
+    border-radius: 5px;
+}
+
+.skills-image {
+    width: 40%;
+}
+
+.skills-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Projects */
+.project {
+    background: white;
+    padding: 15px;
+    margin: 20px auto;
+    width: 60%;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form */
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto; /* Centering the form */
+}
+label, input, textarea, button {
+    margin-bottom: 15px; /* Spacing between elements */
+}
+input, textarea {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project {
+        width: 90%;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-links img {
+        width: 35px;
+        height: 35px;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        width: 100%;
+    }
+}
