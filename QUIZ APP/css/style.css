@@ -1,0 +1,24 @@
+.timer-container {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 100%;
+    background: #377dd8;
+    transition: width 1s linear;
+    border-radius: 5px;
+}
+
+#timer-text {
+    position: absolute;
+    right: 10px;
+    top: -20px;
+    font-size: 16px;
+    font-weight: bold;
+}
