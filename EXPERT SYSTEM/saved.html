@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="recipeName"></h1>
+        <img id="recipeImage" src="" alt="Recipe Image">
+        <p id="recipeDescription"></p>
+        <button onclick="goBack()">Back to Dashboard</button>
+    </div>
+
+    <script>
+        function loadRecipeDetails() {
+            const recipeData = localStorage.getItem("selectedRecipe");
+            if (!recipeData) {
+                document.body.innerHTML = "<h2>No recipe data found.</h2>";
+                return;
+            }
+
+            const recipe = JSON.parse(recipeData);
+            document.getElementById("recipeName").innerText = recipe.name;
+            document.getElementById("recipeImage").src = recipe.image;
+            document.getElementById("recipeDescription").innerText = recipe.description;
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        loadRecipeDetails();
+    </script>
+
+</body>
+</html>

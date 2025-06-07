@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert System - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ensure full-page background image */
+        body {
+            font-family: "Times New Roman", serif;
+            text-align: center;
+            background: url('images/lan.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white; /* Ensure text is visible */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .header {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        /* Transparent Glassmorphic Buttons */
+        button {
+            background: rgba(255, 255, 255, 0.2); /* Transparent white */
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            backdrop-filter: blur(10px); /* Blur effect */
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        /* Transparent Card */
+        .card {
+            background: rgba(255, 255, 255, 0.2); /* White with transparency */
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px); /* Adds blur effect */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 50%;
+        }
+        .title {
+            font-size: 50px; /* Increased font size */
+            font-weight: bold;
+            color: white; /* Ensure visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div></div> <!-- Empty div to push buttons to the right -->
+        <div class="buttons">
+            <button onclick="location.href='login.html'">Login</button>
+            <button onclick="location.href='register.html'">Register</button>
+        </div>
+    </div>
+    
+    <!-- Card Wrapper for Content -->
+    <div class="card">
+        <div class="title">
+            Welcome to Recipe Expert System
+        </div>
+    </div>
+</body>
+</html>
