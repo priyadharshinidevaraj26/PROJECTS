@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        background-image: url('/static/home.jpg'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        flex-direction: column;
+    }
+    h1 {
+        color:black; /* Changed to white for better contrast on the background */
+        text-align: center;
+        font-size: 60px;
+        margin-bottom: 200px;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+    .card {
+        width: 250px;
+        padding: 25px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        background-color: white;
+    }
+    .card:hover {
+        background-color: #f0f0f0;
+        transform: scale(1.1);
+    }
+    .card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .card p {
+        font-size: 16px;
+        color: #777;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='/'">&#8592; Logout</button>
+
+    <h1>Welcome to Health Management System</h1>
+   
+    <div class="container">
+        <div class="card" onclick="window.location.href='/bmi'">
+            <h3>BMI Calculator</h3>
+            <p>Calculate your Body Mass Index</p>
+        </div>
+        <div class="card" onclick="window.location.href='/bp'">
+            <h3>Blood Pressure</h3>
+            <p>Track your blood pressure</p>
+        </div>
+        <div class="card" onclick="window.location.href='/pulse'">
+            <h3>Pulse Rate</h3>
+            <p>Monitor your pulse rate</p>
+        </div>
+    </div>
+</body>
+</html>

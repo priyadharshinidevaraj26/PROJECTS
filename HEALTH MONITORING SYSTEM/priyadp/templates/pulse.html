@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse Rate Tracker</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        h1, h3 {
+            color: #2c3e50;
+        }
+
+        .back-arrow {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1rem;
+        }
+
+        .back-arrow:hover {
+            color: #0056b3;
+        }
+
+        .text-low {
+            color: #17a2b8; /* Blue for low */
+        }
+
+        .text-normal {
+            color: #28a745; /* Green for normal */
+        }
+
+        .text-high {
+            color: #dc3545; /* Red for high */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Back Arrow -->
+        <a href="/home" class="back-arrow mb-3 d-inline-block">
+            &#8592; Back to Home
+        </a>
+
+        <!-- Content Section -->
+        <div class="content-section d-flex">
+            <!-- Left Section -->
+            <div class="left-section">
+                <!-- Pulse Rate Form -->
+                <div class="card p-4 mb-4">
+                    <h1 class="mb-4">Pulse Rate Tracker</h1>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="pulse_rate" class="form-label">Pulse Rate (bpm):</label>
+                            <input type="number" id="pulse_rate" name="pulse_rate" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit Pulse Rate</button>
+                    </form>
+                </div>
+
+                <!-- Pulse Rate Interpretation -->
+                {% if pulse_rate %}
+                <div class="card p-4">
+                    <h3>Your Pulse Rate: {{ pulse_rate }} bpm</h3>
+                    <p>Interpretation: 
+                        {% if interpretation == 'Low' %}
+                            <strong class="text-low">Low</strong>
+                        {% elif interpretation == 'Normal' %}
+                            <strong class="text-normal">Normal</strong>
+                        {% else %}
+                            <strong class="text-high">High</strong>
+                        {% endif %}
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Section -->
+            <div class="right-section">
+                {% if graph_html %}
+                <div class="card p-4">
+                    <h3>Pulse Rate History Graph</h3>
+                    <div>
+                        {{ graph_html | safe }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

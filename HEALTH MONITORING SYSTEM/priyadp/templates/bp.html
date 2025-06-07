@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Pressure</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: nowrap;
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+        }
+
+        h1, h3 {
+            color: #2c3e50;
+        }
+
+        .back-arrow {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1rem;
+        }
+
+        .back-arrow:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Back Arrow -->
+        <a href="/home" class="back-arrow mb-3 d-inline-block">
+            &#8592; Back to Home
+        </a>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <!-- Left Section: BP Form and Interpretation -->
+            <div class="left-section">
+                <div class="card p-4 mb-4">
+                    <h1 class="mb-4">Blood Pressure Calculator</h1>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="systolic" class="form-label">Systolic (mmHg):</label>
+                            <input type="number" id="systolic" name="systolic" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="diastolic" class="form-label">Diastolic (mmHg):</label>
+                            <input type="number" id="diastolic" name="diastolic" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+
+                <!-- BP Interpretation -->
+                {% if systolic and diastolic %}
+                <div class="card p-4">
+                    <h3>Your Blood Pressure:</h3>
+                    <p><strong>Systolic:</strong> {{ systolic }} mmHg</p>
+                    <p><strong>Diastolic:</strong> {{ diastolic }} mmHg</p>
+                    <p>Interpretation:</p>
+                    <p>
+                        {% if systolic < 90 and diastolic < 60 %}
+                            <strong class="text-success">Hypotension</strong>
+                        {% elif 90 <= systolic < 120 and 60 <= diastolic < 80 %}
+                            <strong class="text-warning">Normal</strong>
+                        {% elif 121 <= systolic < 140 and 80 <= diastolic < 90 %}
+                            <strong class="text-warning">Prehypertension</strong>
+                        {% elif 140 <= systolic < 160 and 90 <= diastolic < 100 %}
+                            <strong class="text-warning">Stage 1 Hpertension</strong>
+                        {% elif 160 <= systolic < 180 and 100 <= diastolic < 110 %}
+                            <strong class="text-warning">Stage 2 Hypertension</strong>
+                        {% elif systolic >= 180 or diastolic >= 110 %}
+                            <strong class="text-danger">Stage 3 Hypertension</strong>
+                        {% else %}
+                            <strong class="text-danger">Hypertensive Crisis</strong>
+                        {% endif %}
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Section: BP History Graph -->
+            <div class="right-section">
+                {% if graph_html %}
+                <div class="card p-4">
+                    <h3>Blood Pressure History</h3>
+                    <div>
+                        {{ graph_html | safe }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
